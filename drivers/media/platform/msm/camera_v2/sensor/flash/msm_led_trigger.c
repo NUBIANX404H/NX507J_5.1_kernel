@@ -69,6 +69,7 @@ static int32_t msm_led_trigger_config(struct msm_led_flash_ctrl_t *fctrl,
 		break;
 
 	case MSM_CAMERA_LED_LOW:
+			mdelay(5);
 		#ifdef CONFIG_ZTE_CAMERA_DUAL_LED
         if (fctrl->torch_trigger) {
           if(cfg->torch_current == 0) {
