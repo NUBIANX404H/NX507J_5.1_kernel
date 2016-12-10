@@ -238,6 +238,34 @@ static struct gpiomux_setting lcd_rst_sus_cfg = {
 	.pull = GPIOMUX_PULL_DOWN,
 };
 
+#ifdef CONFIG_ZTEMT_LCD_POWER_CONTRL
+/*avdd neg ctl board2 add ,mayu 6.25*/
+static struct gpiomux_setting lcd_en_act_cfg = {
+	.func = GPIOMUX_FUNC_GPIO,
+	.drv = GPIOMUX_DRV_8MA,
+	.pull = GPIOMUX_PULL_NONE,
+	.dir = GPIOMUX_OUT_HIGH,
+};
+
+static struct gpiomux_setting lcd_en_sus_cfg = {
+	.func = GPIOMUX_FUNC_GPIO,
+	.drv = GPIOMUX_DRV_2MA,
+	.pull = GPIOMUX_PULL_DOWN,
+};
+static struct gpiomux_setting lcd_avdd_neg_en_act_cfg = {
+	.func = GPIOMUX_FUNC_GPIO,
+	.drv = GPIOMUX_DRV_8MA,
+	.pull = GPIOMUX_PULL_NONE,
+	.dir = GPIOMUX_OUT_HIGH,
+};
+
+static struct gpiomux_setting lcd_avdd_neg_en_sus_cfg = {
+	.func = GPIOMUX_FUNC_GPIO,
+	.drv = GPIOMUX_DRV_2MA,
+	.pull = GPIOMUX_PULL_DOWN,
+};
+#endif
+
 static struct msm_gpiomux_config msm_lcd_configs[] __initdata = {
 	{
 		.gpio = 25,		/* LCD Reset */
@@ -246,6 +274,24 @@ static struct msm_gpiomux_config msm_lcd_configs[] __initdata = {
 			[GPIOMUX_SUSPENDED] = &lcd_rst_sus_cfg,
 		},
 	},
+#ifdef CONFIG_ZTEMT_LCD_POWER_CONTRL
+/*avdd  ctl board2 add ,mayu 6.25*/
+	{
+		.gpio = 33,
+		.settings = {
+			[GPIOMUX_ACTIVE]    = &lcd_en_act_cfg,
+			[GPIOMUX_SUSPENDED] = &lcd_en_sus_cfg,
+		},
+	},
+	{
+		.gpio = 34,
+		.settings = {
+			[GPIOMUX_ACTIVE]    = &lcd_avdd_neg_en_act_cfg ,
+			[GPIOMUX_SUSPENDED] = &lcd_avdd_neg_en_sus_cfg ,
+		},
+	},
+#else
+/*qcom ori*/
 	{
 		.gpio = 109,		/* LCD Enable */
 		.settings = {
@@ -253,6 +299,7 @@ static struct msm_gpiomux_config msm_lcd_configs[] __initdata = {
 			[GPIOMUX_SUSPENDED] = &lcd_rst_sus_cfg,
 		},
 	}
+#endif
 };
 
 static struct msm_gpiomux_config msm_blsp_configs[] __initdata = {
@@ -760,7 +807,29 @@ static struct msm_gpiomux_config msm_sensor_configs_skuf_plus[] __initdata = {
 	},
 };
 
+#ifdef CONFIG_ZTEMT_AUDIO_NX404H
 
+static struct gpiomux_setting euro_america_HP_act_cfg = {
+	.func = GPIOMUX_FUNC_GPIO,
+	.drv = GPIOMUX_DRV_2MA,
+	.pull = GPIOMUX_PULL_UP,
+};
+
+static struct gpiomux_setting euro_america_HP_suspend_cfg = {
+	.func = GPIOMUX_FUNC_GPIO,
+	.drv = GPIOMUX_DRV_2MA,
+	.pull = GPIOMUX_PULL_DOWN,
+};
+static struct msm_gpiomux_config msm_euro_america_HP_configs[] __initdata = {
+	{
+		.gpio = 63,
+		.settings = {
+			[GPIOMUX_SUSPENDED] = &euro_america_HP_suspend_cfg,
+			[GPIOMUX_ACTIVE] = &euro_america_HP_act_cfg,
+		},
+	},
+};
+#else
 static struct gpiomux_setting auxpcm_act_cfg = {
 	.func = GPIOMUX_FUNC_1,
 	.drv = GPIOMUX_DRV_8MA,
@@ -803,6 +872,7 @@ static struct msm_gpiomux_config msm_auxpcm_configs[] __initdata = {
 		},
 	},
 };
+#endif
 
 static struct gpiomux_setting usb_otg_sw_cfg = {
 	.func = GPIOMUX_FUNC_GPIO,

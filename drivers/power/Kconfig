@@ -536,6 +536,21 @@ config ZTEMT_NX507_BATT_2300MAH
 	help
 	  ZTEMT 2300mAh battery
 
+<<<<<<< HEAD
+=======
+config ZTEMT_BATT_3000MAH_NX506J
+	bool "ZTEMT 3000mAh battery for nx506"
+	default n
+	help
+	  ZTEMT 3000mAh battery
+	  
+config ZTEMT_2000AMH_BATTERY
+	bool "ZTEMT 2000AMH BATTERY"
+	default n
+	help
+	  ZTEMT 2000AMH Battery Feature	  
+
+>>>>>>> 9ac25da... nx404j
 config ZTEMT_BATT_3000MAH
 	bool "ZTEMT 3000mAh battery for nx505"
 	default n
