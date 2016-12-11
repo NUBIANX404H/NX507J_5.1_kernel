@@ -267,10 +267,7 @@ obj-$(CONFIG_QPNP_BMS) += bms-batterydata-oem.o bms-batterydata-qrd-4v35-2000mah
 #ZTEMT Added
 obj-$(CONFIG_ZTEMT_NX507_BATT_2300MAH) += bms_ztemt_NX507_batterydata_2300mAh.o
 obj-$(CONFIG_ZTEMT_BATT_3000MAH) += bms_ztemt_batterydata_3000mAh.o
-<<<<<<< HEAD
-=======
 obj-$(CONFIG_ZTEMT_2000AMH_BATTERY) += bms_ztemt_batterydata_2000mAh.o
->>>>>>> 9ac25da... nx404j
 #ZTEMT END
 obj-$(CONFIG_MACH_APQ8064_CDP) += board-8064-all.o board-8064-regulator.o
 obj-$(CONFIG_MACH_APQ8064_MTP) += board-8064-all.o board-8064-regulator.o

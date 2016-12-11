@@ -11,11 +11,11 @@
  */
 
 #include <mach/gpiomux.h>
-#include "msm_camera_dt_util.h"
+#include "io/msm_camera_dt_util.h"
 #include "msm_camera_io_util.h"
 #include "msm_camera_i2c_mux.h"
 #include "msm_cci.h"
-
+#include "io/msm_camera_i2c.h"
 
 /*#define CONFIG_MSM_CAMERA_DT_DEBUG*/
 #undef CDBG
