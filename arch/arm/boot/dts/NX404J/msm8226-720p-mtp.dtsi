@@ -177,7 +177,6 @@
 
 		qcom,cdc-mclk-gpios = <&pm8226_gpios 1 0>;
 		qcom,cdc-vdd-spkr-gpios = <&pm8226_gpios 2 0>;
-		qcom,cdc-us-euro-gpios = <&msmgpio 69 0>;
 	};
 
 	sound-9302 {
@@ -195,7 +194,6 @@
 
 		qcom,cdc-mclk-gpios = <&pm8226_gpios 1 0>;
 		qcom,cdc-vdd-spkr-gpios = <&pm8226_gpios 2 0>;
-		qcom,cdc-us-euro-gpios = <&msmgpio 69 0>;
 	};
 };
 
@@ -363,7 +361,6 @@
 						  00 00 00 00 00
 						  00];
 				qcom,use-blink;
-				qcom,in-order-command-processing;
 			};
 		};
 
@@ -391,7 +388,6 @@
 						  00 00 00 00 00
 						  00];
 				qcom,use-blink;
-				qcom,in-order-command-processing;
 			};
 		};
 	};
