@@ -1211,14 +1211,14 @@ static void synaptics_rmi4_sensor_report(struct synaptics_rmi4_data *rmi4_data)
 #else
 			/* For large area event */
 			input_mt_slot(rmi4_data->input_dev, 0);
-            input_mt_report_slot_state(rmi4_data->input_dev, MT_TOOL_FINGER, true);
-            input_report_abs(rmi4_data->input_dev, ABS_MT_PRESSURE, 1000);
-            input_sync(rmi4_data->input_dev);
+            		input_mt_report_slot_state(rmi4_data->input_dev, MT_TOOL_FINGER, true);
+            		input_report_abs(rmi4_data->input_dev, ABS_MT_PRESSURE, 1000);
+            		input_sync(rmi4_data->input_dev);
 
-            /* Release all finger */
-        	for (fingers = 0; fingers < 10; fingers++) {
-        		input_mt_slot(rmi4_data->input_dev, fingers);
-        		input_mt_report_slot_state(rmi4_data->input_dev, MT_TOOL_FINGER, false);
+            		/* Release all finger */
+       			for (fingers = 0; fingers < 10; fingers++) {
+       				input_mt_slot(rmi4_data->input_dev, fingers);
+        			input_mt_report_slot_state(rmi4_data->input_dev, MT_TOOL_FINGER, false);
         	}
             input_sync(rmi4_data->input_dev);
 #endif
@@ -1276,17 +1276,11 @@ static void synaptics_rmi4_sensor_report(struct synaptics_rmi4_data *rmi4_data)
 			input_sync(rmi4_data->input_dev);
 #else
 			input_report_key(rmi4_data->input_dev, KEY_F10, 1);
-<<<<<<< HEAD
-			input_sync(rmi4_data->input_dev);
-
-			input_report_key(rmi4_data->input_dev, KEY_F10, 0);
-=======
 			//input_report_key(rmi4_data->input_dev, KEY_POWER, 1);
 			input_sync(rmi4_data->input_dev);
 
 			input_report_key(rmi4_data->input_dev, KEY_F10, 0);
 			//input_report_key(rmi4_data->input_dev, KEY_POWER, 0);
->>>>>>> c2ca63b... Update to Rel. V1
 			input_sync(rmi4_data->input_dev);
 #endif
 
