@@ -1276,17 +1276,9 @@ static void synaptics_rmi4_sensor_report(struct synaptics_rmi4_data *rmi4_data)
 			input_sync(rmi4_data->input_dev);
 #else
 			input_report_key(rmi4_data->input_dev, KEY_F10, 1);
-<<<<<<< HEAD
 			input_sync(rmi4_data->input_dev);
 
 			input_report_key(rmi4_data->input_dev, KEY_F10, 0);
-=======
-			//input_report_key(rmi4_data->input_dev, KEY_POWER, 1);
-			input_sync(rmi4_data->input_dev);
-
-			input_report_key(rmi4_data->input_dev, KEY_F10, 0);
-			//input_report_key(rmi4_data->input_dev, KEY_POWER, 0);
->>>>>>> c2ca63b... Update to Rel. V1
 			input_sync(rmi4_data->input_dev);
 #endif
 
