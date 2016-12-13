@@ -1569,7 +1569,6 @@ static int mdss_mdp_parse_bootarg(struct platform_device *pdev)
 	}
 
 get_dt_pan:
-	if (!rc)
 	rc = mdss_mdp_parse_dt_pan_intf(pdev);
 	/* if pref pan intf is not present */
 	if (rc)
