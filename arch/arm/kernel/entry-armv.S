@@ -453,15 +453,6 @@ __und_usr:
 	@
 	adr	r9, BSYM(ret_from_exception)
 
-<<<<<<< HEAD
-	@ IRQs must be enabled before attempting to read the instruction from
-	@ user space since that could cause a page/translation fault if the
-	@ page table was modified by another CPU.
-	enable_irq
-
-	adr	lr, BSYM(__und_usr_unknown)
-=======
->>>>>>> a2ba509... big update: 3.4.108 + zram update + selinux patch + prima + exfat
 	tst	r3, #PSR_T_BIT			@ Thumb mode?
 	bne	__und_usr_thumb
 	sub	r4, r2, #4			@ ARM instr at LR - 4
@@ -698,16 +689,12 @@ ENTRY(no_fp)
 	mov	pc, lr
 ENDPROC(no_fp)
 
-<<<<<<< HEAD
-__und_usr_unknown:
-=======
 __und_usr_fault_32:
 	mov	r1, #4
 	b	1f
 __und_usr_fault_16:
 	mov	r1, #2
 1:	enable_irq
->>>>>>> a2ba509... big update: 3.4.108 + zram update + selinux patch + prima + exfat
 	mov	r0, sp
 	adr	lr, BSYM(ret_from_exception)
 	b	__und_fault

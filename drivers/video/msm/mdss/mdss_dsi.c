@@ -1623,14 +1623,29 @@ int dsi_panel_device_register(struct device_node *pan_node,
 
 	ctrl_pdata->panel_data.event_handler = mdss_dsi_event_handler;
 
-	if (ctrl_pdata->status_mode == ESD_REG)
-		ctrl_pdata->check_status = mdss_dsi_reg_status_check;
-	else if (ctrl_pdata->status_mode == ESD_BTA)
-		ctrl_pdata->check_status = mdss_dsi_bta_status_check;
+	/*qcom ori*/
+	ctrl_pdata->check_status = mdss_dsi_bta_status_check;
+#ifdef CONFIG_ZTEMT_LCD_ESD_TE_CHECK
+#if defined(CONFIG_ZTEMT_NE501_LCD)
+/*esd check faild check,mayu add*/
+    if (ctrl_pdata->panel_name
+           && (!strcmp(ctrl_pdata->panel_name, "cs nt35592 720p video mode dsi panel")
+                || !strcmp(ctrl_pdata->panel_name, "lianchuang nt35592 720p video mode dsi panel"))) {
+		ctrl_pdata->check_status = zte_check_status_by_te;
+		printk("nt35592 check by te\n");
 
-	if (ctrl_pdata->status_mode == ESD_MAX) {
-		pr_err("%s: Using default BTA for ESD check\n", __func__);
-		ctrl_pdata->check_status = mdss_dsi_bta_status_check;
+	} else if (ctrl_pdata->panel_name 
+		&& !strcmp(ctrl_pdata->panel_name, "success hx8392b 720p video mode dsi panel")) {
+		ctrl_pdata->check_status = success_hx83920b_check_status;
+		printk("hx83920b check faled always\n");
+	}
+#elif defined(CONFIG_ZTEMT_NX404H_LCD)
+	if (ctrl_pdata->panel_name
+           && !strcmp(ctrl_pdata->panel_name, "otm1282a 720p command mode dsi panel")) {
+		ctrl_pdata->check_status = zte_check_status_by_te;
+	}else{
+    //other lcd run empty fun
+    ctrl_pdata->check_status = zte_check_status_ok;
 	}
 	if (ctrl_pdata->bklt_ctrl == BL_PWM)
 		mdss_dsi_panel_pwm_cfg(ctrl_pdata);

@@ -41,6 +41,11 @@ menu "ZTEMT lcd driver support"
 config ZTEMT_LCD_MIPI_COMMON
 	bool "ztemt lcd MIPI interface driver module"
 	default n
+	
+config ZTEMT_NX404H_LCD
+	bool "ztemt NX404H LCD driver module"
+	default n
+	
 config ZTEMT_QCOMM_I2C6
        bool "qcomm i2c6"
        default n

@@ -373,9 +373,6 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -Wno-implicit-function-declaration \
 		   -Wno-uninitialized \
 		   -Wno-format-security \
-<<<<<<< HEAD
-		   -fno-delete-null-pointer-checks
-=======
 		   -Wno-unused-value \
 		   -Wno-unused-variable \
 		   -Wno-unused-function \
@@ -383,7 +380,6 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -mcpu=cortex-a15 -mtune=cortex-a15 -mfpu=neon-vfpv4 -marm
 
 
->>>>>>> a2ba509... big update: 3.4.108 + zram update + selinux patch + prima + exfat
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
 KBUILD_AFLAGS   := -D__ASSEMBLY__
